@@ -27,8 +27,7 @@ router.post('/register',async (req,res,next) => {
     if (EmailExist) return res.status(400).send("Email exist ..!");
 
     //Hash the password 
-    const salt =  bcrypt.genSalt(10);
-    const hashPassword = await bcrypt.hash(req.body.password,salt);
+    const hashPassword = await bcrypt.hash(req.body.password,10);
     //res.send(hashPassword);
 
     const user = new User ({
@@ -74,8 +73,3 @@ router.post('/login', async (req,res,next) => {
 module.exports = router
 
 
-// {
-//     "name":"santhosh",
-//     "email":"santhosh@gmail.com",
-//     "password":"moresecurepasswd"
-// }
